@@ -1,0 +1,35 @@
+unique-id: voracious-regolith
+phe-label: K417N
+alternate-names:
+- K417N
+belongs-to-lineage:
+- PANGO: None
+description: K417N containing sequences
+information-sources:
+-
+variants:
+- amino-acid-change: K417N
+  codon-change: AAG-AAT
+  gene: S
+  one-based-reference-position: 22813
+  predicted-effect: non-synonymous
+  protein: surface glycoprotein
+  protein-codon-position: 417
+  reference-base: G
+  type: SNP
+  variant-base: T
+calling-definition:
+  confirmed:
+    mutations-required: 1
+    indels-required: 0
+    allowed-wildtype: 0
+  low-qc:
+    mutations-required: 0
+    indels-required: 0
+    allowed-wildtype: 0
+acknowledgements:
+curators:
+- Natalie Groves
+- Ulf Schaefer
+- Nick Loman
+- Richard Myers

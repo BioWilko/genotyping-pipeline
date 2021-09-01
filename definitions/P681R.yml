@@ -1,0 +1,35 @@
+unique-id: deleterious-derivative
+phe-label: P681R
+alternate-names:
+- P681R
+belongs-to-lineage:
+- PANGO: None
+description: P681R containing sequences
+information-sources:
+-
+variants:
+- amino-acid-change: P681R
+  codon-change: CCT-CGT
+  gene: S
+  one-based-reference-position: 23604
+  predicted-effect: non-synonymous
+  protein: surface glycoprotein
+  protein-codon-position: 681
+  reference-base: C
+  type: SNP
+  variant-base: G
+calling-definition:
+  confirmed:
+    mutations-required: 1
+    indels-required: 0
+    allowed-wildtype: 0
+  low-qc:
+    mutations-required: 0
+    indels-required: 0
+    allowed-wildtype: 0
+acknowledgements:
+curators:
+- Natalie Groves
+- Ulf Schaefer
+- Nick Loman
+- Richard Myers

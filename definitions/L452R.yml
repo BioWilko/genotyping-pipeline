@@ -1,0 +1,35 @@
+unique-id: L452R
+phe-label: L452R
+alternate-names:
+- L452R
+belongs-to-lineage:
+- PANGO: None
+description: L452R containing sequences
+information-sources:
+-
+variants:
+- amino-acid-change: L452R
+  codon-change: CTG-CGG
+  gene: S
+  one-based-reference-position: 22917
+  predicted-effect: non-synonymous
+  protein: surface glycoprotein
+  protein-codon-position: 452
+  reference-base: T
+  type: SNP
+  variant-base: G
+calling-definition:
+  confirmed:
+    mutations-required: 1
+    indels-required: 0
+    allowed-wildtype: 0
+  low-qc:
+    mutations-required: 0
+    indels-required: 0
+    allowed-wildtype: 0
+acknowledgements:
+curators:
+- Natalie Groves
+- Ulf Schaefer
+- Nick Loman
+- Richard Myers
