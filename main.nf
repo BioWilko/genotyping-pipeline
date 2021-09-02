@@ -21,6 +21,7 @@ process custom_metadata {
 }
 
 process pull_cog_ids {
+  conda '$baseDir/environments/environment.yml'
   input:
     file metadata from metadata_ch
   output:
@@ -80,7 +81,7 @@ process cat_consensus {
     id_str = samp_ids.join(',')
 
   """
-  cat ${data_dir}{${id_str}}.nanopolish-indel.consensus.fasta > temp_consensus.fasta
+  cat ${data_dir}/{${id_str}}.nanopolish-indel.consensus.fasta > temp_consensus.fasta
   awk -F'.' '/^>/ {print \$1; next}{print}' < temp_consensus.fasta > combined_consensus.fasta
   """
 }
@@ -110,6 +111,7 @@ process pangolin {
 
 process report {
   publishDir out_dir, overwrite: true
+  conda '$baseDir/environments/environment.yml'
   input:
     file types from type_ch
     file lineage from lineage_ch
@@ -129,8 +131,6 @@ process report {
   group_df = df.groupby(["sample_id"])
 
   ids = df["sample_id"].unique()
-
-  # mutations = ["E484K", "E484Q", "N501Y", "K417N", "K417T", "L452R", "P681R", "P681H"]
 
   dictionary = {}
 
