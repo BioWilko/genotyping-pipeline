@@ -7,7 +7,7 @@ pango_env = params.pango
 
 samp_ids = params.id_list //COG-IDs separated by commas
 
-environment = "$baseDir/environments/environment.yml"
+environment = "$projectDir/environments/environment.yml"
 
 id_str = samp_ids.replaceAll(",", " ")
 
@@ -116,7 +116,7 @@ process pangolin {
 
 process report {
   publishDir out_dir, overwrite: true
-  conda $baseDir'/environments/environment.yml'
+  conda environment
   input:
     file types from type_ch
     file lineage from lineage_ch
