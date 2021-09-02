@@ -3,7 +3,12 @@ out_dir = params.out
 metadata = params.metadata //path to TSV containing all relevant metadata formatted for CLIMB-COVID
 definition_dir = params.definitions //directory containing aln2type yaml files, e.g. ./definitions in this repo
 
-samp_ids = params.id_list
+pango_env = params.pango
+
+samp_ids = params.id_list //COG-IDs separated by commas
+
+environment = "$baseDir/environments/environment.yml"
+
 id_str = samp_ids.replaceAll(",", " ")
 
 process custom_metadata {
@@ -21,7 +26,7 @@ process custom_metadata {
 }
 
 process pull_cog_ids {
-  conda '$baseDir/environments/environment.yml'
+  conda environment
   input:
     file metadata from metadata_ch
   output:
@@ -98,7 +103,7 @@ process aln2type {
 }
 
 process pangolin {
-  conda '/data/homes/samw/miniconda3/envs/pangolin/'
+  conda pango_env
   input:
     file combined from consensus_out_ch
   output:
@@ -111,7 +116,7 @@ process pangolin {
 
 process report {
   publishDir out_dir, overwrite: true
-  conda '$baseDir/environments/environment.yml'
+  conda $baseDir'/environments/environment.yml'
   input:
     file types from type_ch
     file lineage from lineage_ch
