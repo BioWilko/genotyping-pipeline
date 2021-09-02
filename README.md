@@ -6,7 +6,7 @@ Also requires a working install of [pangolin](https://github.com/cov-lineages/pa
 
 Unfortunately this will fall over if you only provide one findable COG-ID.
 
-##Usage Example
+## Usage Example
 
 ```
 nextflow main.nf --id_list TEST-123456,TEST-123457 --data ~/artic_out_dir/ --out ~/out_dir/ --metadata ~/metadata.tsv --pango ~/miniconda3/envs/pangolin
