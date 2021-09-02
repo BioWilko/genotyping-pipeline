@@ -1,7 +1,7 @@
-data_dir = "" //directory containing artic pipeline output
-out_dir = ""
-metadata = "" //path to TSV containing all relevant metadata formatted for CLIMB-COVID
-definition_dir = "" //directory containing aln2type yaml files, e.g. ./definitions in this repo
+data_dir = params.data //directory containing artic pipeline output
+out_dir = params.out
+metadata = params.metadata //path to TSV containing all relevant metadata formatted for CLIMB-COVID
+definition_dir = params.definitions //directory containing aln2type yaml files, e.g. ./definitions in this repo
 
 samp_ids = params.id_list
 id_str = samp_ids.replaceAll(",", " ")
@@ -117,7 +117,7 @@ process report {
     file lineage from lineage_ch
     file sender_ids from sender_ids_ch
   output:
-    file("turnkey_genotype_calls.tsv")
+    file("genotype_calls.tsv")
 
   """
   #!/usr/bin/env python
@@ -174,7 +174,7 @@ process report {
 
   report_df = lineage_df.join(type_calls, how="outer")
 
-  report_df.to_csv("turnkey_genotype_calls.tsv", sep="\t")
+  report_df.to_csv("genotype_calls.tsv", sep="\t")
   """
 }
 
