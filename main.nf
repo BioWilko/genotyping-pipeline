@@ -1,9 +1,10 @@
 data_dir = params.data //directory containing artic pipeline output
 out_dir = params.out
 metadata = params.metadata //path to TSV containing all relevant metadata formatted for CLIMB-COVID
-definition_dir = params.definitions //directory containing aln2type yaml files, e.g. ./definitions in this repo
 
 pango_env = params.pango
+
+definitions = "$projectDir/definitions/*.yml"
 
 samp_ids = params.id_list //COG-IDs separated by commas
 
@@ -98,7 +99,7 @@ process aln2type {
     file("type_calls.csv") into type_ch
   
   """
-  aln2type ./ ./ type_calls.csv MN908947 ${msa} --no_call_deletion --output_unclassified /data/homes/samw/projects/turnkey_genotype_validation/definitions/*
+  aln2type ./ ./ type_calls.csv MN908947 ${msa} --no_call_deletion --output_unclassified ${definitions}
   """
 }
 
@@ -141,7 +142,7 @@ process report {
 
   mutation_locs = {}
 
-  definitions = glob.glob("${definition_dir}/*.yml")
+  definitions = glob.glob("${definitions}")
 
   mutations = [x.split("/")[-1].replace(".yml", "") for x in definitions]
 
