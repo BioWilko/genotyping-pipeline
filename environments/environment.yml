@@ -1,0 +1,4 @@
+name: genotyping-env
+dependencies:
+  - biopython
+  - pandas
